@@ -22,7 +22,6 @@ outname=$(sed -n 's/.*Output:[ \t]*\([^ \t]*\).*/\1/p' "$src" | head -n 1)
 }
 
 outname=$(basename "$outname")
-src_dir=$(dirname "$src")
 tmpdir=
 
 cleanup_exit() {
@@ -104,7 +103,7 @@ esac
 	echo "Конечный файл не создан: $outname" >&2
 	exit 6
 }
-cp -p -- "$tmpdir/$outname" "$src_dir/$outname" || {
+cp -p -- "$tmpdir/$outname" "./$outname" || {
 	echo "Не удалось скопировать результат" >&2
 	exit 7
 }
