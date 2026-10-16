@@ -115,9 +115,11 @@ int main() {
 			} else if(client ==  -1) {
 				client = new_client;
 				printf("Client connected: fd=%d\n", client);
+				continue;
 			} else {
 				printf("Дополнительный клиент закрыт: fd = %d\n", new_client);
 				close(new_client);
+				continue;
 			}
 		}
 		if (client != -1 && FD_ISSET(client, &read_set)) {
